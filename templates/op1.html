@@ -1,0 +1,156 @@
+<html>
+    <head>
+        <title>Registrar carro</title>
+        <style>
+            .hidden{
+                display: none;
+            }
+            ul {
+                    list-style: none;
+                    padding: 0px;
+                    margin: 0px;
+                    width: 300px;
+                }
+            .container {
+                display: flex;
+                flex-direction: row;
+
+
+            }
+            .box{   
+                width: 250px;
+                height: 150px;
+                border: 5px;
+
+            }
+            .tabla {
+                list-style: none;
+                flex-direction: row;
+                padding: 0px;
+                margin: 0px; 
+                align-self: center; 
+                padding-left: 15px;
+                padding-right: 15px;
+
+                }
+            table, th,td{
+                    border:1px solid black;
+                    border-collapse: collapse;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
+            th,td{
+                    text-align: left;
+                }        
+        </style>
+    </head>
+    <body>
+        <header style="background-color: rgb(124, 125, 235); padding-left: 15px;padding-right: 15px;padding-top: 15px;">
+            <nav>
+                <a href="/" style="color:white; margin: right 4px;">Inicio</a>
+            </nav>
+        </header>
+        <div class="container">
+            <div class = "box">
+                <form id = "form">
+                    <p>Ingrese el nombre: </p>
+                    <input type="text" id ="name" name = "name" required=""/>
+                    <p>Ingrese la placa: </p>
+                    <input type="text" id ="placa" name = "placa"  required=""/>
+                    <input type="submit" value="Enviar"/>
+                </form>
+            </div>
+            <div class="tabla" id="formulario">
+                <table>
+                    <tr>                        
+                        <th>Nombre</th>
+                        <th>Placa</th>
+                        <th>Hora</th>
+                    </tr>
+                    <tr>                        
+                        <td>
+                            {% for d in data %}
+                            <li>{{ d.name }}</li>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for d in data %}
+                            <li>{{d.placa}}</li>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for d in data %}
+                            <li>{{d.date}}</li>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for d in data %}
+                            <li><button class="delete-btn" data-id="{{d.id}}">&#9746;</button></li>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script>
+            //agregar
+            const desName = document.getElementById('name');
+            const desPlaca = document.getElementById('placa');
+            document.getElementById('form').onsubmit = function(e){
+                e.preventDefault();
+                const Name = desName.value;
+                const Placa = desPlaca.value;
+                fetch('/create/formulario',{
+                    method: 'POST',
+                    body: JSON.stringify({
+                        'name': Name,
+                        'placa': Placa,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function(response){
+                    console.log('response: ')
+                    return response.json();
+                }).then(function(responseJson){
+                    console.log('responseJson: ', responseJson);
+                    const li=document.createElement('li')
+                    const deleteBtn =document.createElement('button');
+
+                    deleteBtn.className='delete-btn';
+                    deleteBtn.setAttribute('data-id', responseJson['id']);
+
+                    document.getElementById('error').className='hidden';
+                    window.location.reload()
+                }).catch(function(){
+                    document.getElementById('error').className='';
+                });
+            }
+
+            const items=document.querySelectorAll('.delete-btn');
+            for(let i=0; i<items.length; i++){
+                const item=items[i];
+                item.onclick=function(e){
+                    const formulario_id=e.target.dataset['id'];
+                    fetch('/create/' + formulario_id + '/delete', {
+                        method:'DELETE'
+                    }).then(function(response){
+                        return response.json();
+                    }).then(function(jsonResponse){
+                        console.log("jsonResponse: ", jsonResponse);
+                        if(jsonResponse['success']){
+                            console.log("e :", e);
+                            item.remove();
+                        } else {
+                            document.getElementById('error').className= '';                                                                       
+                        }
+                        document.getElementById('error').className='hidden';
+                    }).catch(function(){
+                        dacument.getElementById('error').className='';
+                    })
+                }
+
+            }
+        </script>        
+    </body>
+</html>
