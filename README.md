@@ -4,11 +4,11 @@ Docente: Marvin Abisrror Zarate
 
 Estacionamiento Utec
 
-Integrantes
--Hósmer Gilberto Casma Morales
--Sergio Marcelo Ricce Abregú
--Hans Alfonso Mendoza Alva
--Giancarlos Martell.l
+Integrantes:
+Hósmer Gilberto Casma Morales.
+Sergio Marcelo Ricce Abregú.
+Hans Alfonso Mendoza Alva.
+Giancarlos Martell.
 
 
 Introducción 
