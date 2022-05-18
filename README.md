@@ -48,7 +48,7 @@ Psql
 
 __API__
 
-__/Login: __
+__/Login:__
 
 request : username, password.
 
@@ -77,6 +77,8 @@ return : jsonify({'success': success })
 ___Hosts___
 
 http://127.0.0.1:5000
+
+localhost:5432
 
 ___Forma de autenticación___
 
