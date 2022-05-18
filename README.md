@@ -1,87 +1,6 @@
-Proyecto de desarrollo basado en plataformas  
+#Proyecto de desarrollo basado en plataformas  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Docente: 
-
-
-Integrantes:
-                                       -Hósmer Gilberto Casma Morales
-                                       -Sergio Marcelo Ricce Abregú
-                                       -Hans Alfonso Mendoza Alva
-                                       -Giancarlos Martell.l
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-• Un README.md en el repositorio que incluya:
-– Nombre del proyecto.
-– Integrantes.
-– Descripción del proyecto.
-– Objetivos principales / Misión / Visión.
-– Información acerca de las librerías/frameworks/plugins utilizadas
-en Front-end, Back-end y Base de datos.
-– El nombre del script a ejecutar para iniciar la base de datos con
-datos.
-– Información acerca de los API. Requests y Responses de cada
-endpoint utilizado en el sistema.
-– Hosts.
-– Forma de autenticación.
-– Manejo de errores HTTP:
-500 : Errores en el Servidor
-400 : Errores en el Cliente
-300 : Redirección
-200 : Exitoso
-100 : Informacional
-– Cómo ejecutar el sistema (Deployment scripts).
-• Revisa bien lo que entregas, después de la fecha de entrega no podrás
-hacer modificaciones.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Docente: Marvin Abisrror Zarate
 
 Estacionamiento Utec
 
@@ -97,6 +16,7 @@ Introducción
 El proyecto (Estacionamiento Utec) se basa en una plataforma virtual que permite a los trabajadores registrar en una base de datos a los usuarios del servicio de estacionamiento Utec, mediante su placa de auto y nombre del propietario del auto al momento de ingresar. Además el sistema registra automáticamente la hora de ingreso del vehículo .
 
 Objetivo principal
+
 Nuestro objetivo es brindar un sistema de registro eficaz y de simple accesibilidad para que los trabajadores del estacionamiento Utec puedan registrar de manera simple a los usuarios y sus vehículos que usan el servicio. 
 
 
@@ -109,9 +29,9 @@ datetime
 flask_sqlalchemy
 flask_migrate
 flask
+
 -Framework :
-Django
-Flash
+Flask
 Psql
 
 
@@ -131,7 +51,7 @@ return : jsonify(response)
 
 -/Create/<formulario_id>/delete
 query : fomulario_id
-return : return jsonify({'success': success })
+return : jsonify({'success': success })
 
 
  Hosts
